@@ -10,7 +10,7 @@ export const Room = ({ user }: Props) => {
   return (
     <StyledRoom>
       <Messages user={user} />
-      <SendMessage />
+      <SendMessage author={user} />
     </StyledRoom>
   )
 }
