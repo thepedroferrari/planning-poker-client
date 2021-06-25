@@ -5,4 +5,6 @@ export const StyledMessages = styled.div`
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  padding-bottom: 2rem;
 `

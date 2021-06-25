@@ -19,15 +19,15 @@ export const StyledMessage = styled(motion.blockquote)<Props>`
     isAuthor
       ? css`
           background: greenyellow;
-          align-self: flex-start;
-          align-items: flex-start;
-          border-radius: 1em 1em 1em 0;
-        `
-      : css`
-          background: lightgray;
           align-self: flex-end;
           align-items: flex-end;
           border-radius: 1em 1em 0 1em;
+        `
+      : css`
+          background: lightgray;
+          align-self: flex-start;
+          align-items: flex-start;
+          border-radius: 1em 1em 1em 0;
         `}
 
   time {

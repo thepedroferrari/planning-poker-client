@@ -82,9 +82,11 @@ export const GlobalStyle = createGlobalStyle`
   --smallLargePadding: calc(var(--padding) / 2) var(--padding);
   --margin: 1.5em;
   --max-basis-font: 24px;
-  --line-height: 1.7;
+  --line-height: 1.5;
   --desktop: 48em;
   --mobile: 26em;
+
+  --header-height: 3rem;
   /* Other */
   font-size: calc(13px + 1vmin);
 }
@@ -126,6 +128,12 @@ body {
   font-family: var(--text-font-family);
 	line-height: var(--line-height);
 	margin: 0;
+  display: grid;
+  grid-template-rows: 1fr;
+  height: 100vh;
+}
+#root {
+  display: grid;
 }
 main {
 	display: block

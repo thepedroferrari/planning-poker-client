@@ -1,5 +1,11 @@
 import { StyledHeader } from "./StyledHeader"
 
 export const Header = () => {
-  return <StyledHeader>Chat room: Frontend</StyledHeader>
+  return (
+    <StyledHeader>
+      <h1>
+        <i>LOGO</i> Room: Frontend
+      </h1>
+    </StyledHeader>
+  )
 }

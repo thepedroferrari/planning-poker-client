@@ -8,7 +8,7 @@ export const App = () => {
     <StyledApp>
       <Header />
       <Sidebar user="Pedro Ferrari" />
-      <Room user="Pedro" />
+      <Room user="Pedro Ferrari" />
     </StyledApp>
   )
 }

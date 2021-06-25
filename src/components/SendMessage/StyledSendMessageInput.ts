@@ -10,6 +10,8 @@ export const StyledSendMessageInput = styled.label`
   width: 100%;
   line-height: 1.1;
   font-size: 1em;
+  max-height: 22.5vh;
+  overflow-y: scroll;
 
   &::after,
   textarea {

@@ -14,7 +14,7 @@ export const Messages = ({ user }: Props) => {
 
   const messages = [...data.messages]
 
-  const renderMessage = messages.map((m) => <Message message={m} isAuthor={m.author === user} />)
+  const renderMessage = messages.map((m) => <Message message={m} isAuthor={m.author === user} key={m.id} />)
 
   return <StyledMessages>{renderMessage}</StyledMessages>
 }

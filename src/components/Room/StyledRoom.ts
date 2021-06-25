@@ -5,5 +5,7 @@ export const StyledRoom = styled.main`
   background: white;
   display: grid;
   grid-template-areas: "messages" "send-message";
-  grid-template-rows: 1fr minmax(max-content, 84px);
+  min-height: calc(100vh - var(--header-height));
+  max-height: calc(100vh - var(--header-height));
+  grid-template-rows: 1fr auto;
 `
