@@ -1,11 +1,20 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client"
+import { WebSocketLink } from "@apollo/client/link/ws"
 import { GlobalStyle } from "GlobalStyles"
 import React from "react"
 import ReactDOM from "react-dom"
 import { App } from "./components/App"
+
 // import reportWebVitals from "./reportWebVitals"
+const wsLink = new WebSocketLink({
+  uri: process.env.REACT_APP_WSS_URL,
+  options: {
+    reconnect: true,
+  },
+})
 
 const client = new ApolloClient({
+  link: wsLink,
   uri: process.env.REACT_APP_GQL_SERVER,
   cache: new InMemoryCache(),
 })

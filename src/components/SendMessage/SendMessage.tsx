@@ -8,10 +8,12 @@ import { StyledSendMessageInput } from "./StyledSendMessageInput"
 
 type Props = {
   author: string
+  scroll: () => void
 }
-export const SendMessage = ({ author }: Props) => {
+export const SendMessage = ({ author, scroll }: Props) => {
   const [text, setText] = useState("")
   const [postMessage] = useMutation(POST_MESSAGE)
+
   const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) => setText(e.target.value)
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -22,6 +24,8 @@ export const SendMessage = ({ author }: Props) => {
           content: text,
         },
       })
+      setText("")
+      scroll()
     }
   }
 
@@ -29,7 +33,7 @@ export const SendMessage = ({ author }: Props) => {
     <StyledSendMessage onSubmit={handleSubmit}>
       <Cards cards={[0.5, 1, 2, 3, 5, 7, 13, 21]} />
       <StyledSendMessageInput data-value={text}>
-        <textarea onInput={handleInput} />
+        <textarea onInput={handleInput} value={text} />
       </StyledSendMessageInput>
       <Button type="submit">
         <span>Send</span> <i>»</i>

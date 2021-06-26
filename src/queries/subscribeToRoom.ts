@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client"
 
-export const GET_ROOM = gql`
-  query {
+export const SUBSCRIBE_ROOM = gql`
+  subscription {
     messages {
       id
       author
