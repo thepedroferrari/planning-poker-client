@@ -3,7 +3,7 @@ export type TMessage = {
   author: string
   content?: string
   date: number
-  vote?: string
+  vote?: number
 }
 
 export type MessagesData = {

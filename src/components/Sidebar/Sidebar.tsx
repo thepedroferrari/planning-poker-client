@@ -1,52 +1,49 @@
+import { useQuery } from "@apollo/client"
+import { GET_ALL_ROOMS } from "queries/getAllRooms"
+import { useEffect, useRef } from "react"
+import { TRoomNameUpdate, TRoomNameUpdateData } from "types/Room"
+import { getFirstAndLastStartingLetters } from "utils"
+import { SidebarRoom } from "./SidebarRoom"
 import { StyledSidebar } from "./StyledSidebar"
-import { StyledSidebarRoom } from "./StyledSidebarRoom"
 
 type Props = {
   user: string
 }
 
-const fakeRooms = [
-  "Front End",
-  "Customer Acquisition",
-  "Customer Payments",
-  "Search Engine Optimization",
-  "Customer Satisfaction",
-  "General Infrastructure",
-  "Big Data",
-  "Machine Learning",
-  "Bird Watchers",
-  "Save Endangered Animals",
-  "Be nice to people",
-  "Have Discipline",
-  "Enjoy yourself",
-  "Never quit",
-]
-
-const getFirstAndLastStartingLetters = (s: string) => {
-  const words = s.split(" ")
-  const firstLetter = words[0].charAt(0)
-  const lastLetter = words[words.length - 1].charAt(0)
-
-  return `${firstLetter}${lastLetter}`.toUpperCase()
-}
-
 export const Sidebar = ({ user }: Props) => {
-  const rooms = [
-    ...fakeRooms.map((room) => ({
-      name: room,
-      abbr: getFirstAndLastStartingLetters(room),
-    })),
-  ]
+  const {
+    loading: isLoading,
+    error,
+    data,
+  } = useQuery<TRoomNameUpdateData>(GET_ALL_ROOMS, {
+    pollInterval: 5000,
+  })
 
-  const roomElements = rooms.map((room, i) => (
-    <StyledSidebarRoom selected={i === 0}>
-      <span>{room.name}</span>
-      <i title={room.name}>{room.abbr}</i>
-    </StyledSidebarRoom>
+  const rooms = useRef<(TRoomNameUpdate & { abbr: string })[]>([])
+
+  useEffect(() => {
+    if (!data) return
+    rooms.current = [
+      ...data.allRooms.map(({ name, lastUpdate }) => ({
+        name,
+        abbr: getFirstAndLastStartingLetters(name),
+        lastUpdate,
+      })),
+    ].sort((a, b) => b.lastUpdate - a.lastUpdate)
+  }, [data])
+
+  if (isLoading || !data || error) return null
+
+  const roomElements = rooms.current.map((room) => (
+    <SidebarRoom
+      key={room.name}
+      name={room.name}
+      abbr={room.abbr}
+      lastUpdate={room.lastUpdate}
+    />
   ))
+
   return user !== "Pedro Ferrari" ? null : (
-    <StyledSidebar>
-      <div>{roomElements}</div>
-    </StyledSidebar>
+    <StyledSidebar>{roomElements}</StyledSidebar>
   )
 }

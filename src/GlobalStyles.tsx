@@ -66,6 +66,16 @@ export const GlobalStyle = createGlobalStyle`
   --pText: 1.15em;
   --inputText: 1em;
   --base-text-size: 1rem;
+  
+  --base-size: 8px;
+  --base-size-half: calc(var(--base-size) / 2);
+  --base-size-quarter: calc(var(--base-size) / 4);
+  --base-size-x2: calc(var(--base-size) * 2);
+  --base-size-x3: calc(var(--base-size) * 3);
+  --base-size-x4: calc(var(--base-size) * 4);
+  --base-size-x6: calc(var(--base-size) * 6);
+  --base-size-x8: calc(var(--base-size) * 8);
+
   --smallText: .8em;
   /* Elevation */
   --box-shadow: 0 0 10px 2px rgba(0, 25, 40, .4);
@@ -88,7 +98,8 @@ export const GlobalStyle = createGlobalStyle`
 
   --header-height: 3rem;
   /* Other */
-  font-size: calc(13px + 1vmin);
+  font-size: 100%;
+
 }
 @media screen and (min-width: 60rem) {
   :root {

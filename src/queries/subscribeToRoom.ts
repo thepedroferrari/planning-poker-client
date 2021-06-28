@@ -1,13 +1,24 @@
 import { gql } from "@apollo/client"
 
 export const SUBSCRIBE_ROOM = gql`
-  subscription {
-    messages {
-      id
-      author
-      content
-      date
-      vote
+  subscription ($name: String!) {
+    room(name: $name) {
+      name
+      owner
+      messages {
+        author
+        content
+        date
+        vote
+      }
+      topics {
+        name
+        votes {
+          author
+          vote
+        }
+      }
+      lastUpdate
     }
   }
 `

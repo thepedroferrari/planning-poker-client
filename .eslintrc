@@ -33,7 +33,7 @@
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "radix": ["error", "as-needed"],
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "max-len": ["warn", { "code": 120, "ignoreUrls": true }],
+    "max-len": ["warn", { "code": 80, "ignoreUrls": true }],
     "@typescript-eslint/naming-convention": [
       "error",
       {

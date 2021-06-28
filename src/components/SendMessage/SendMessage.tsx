@@ -14,7 +14,8 @@ export const SendMessage = ({ author, scroll }: Props) => {
   const [text, setText] = useState("")
   const [postMessage] = useMutation(POST_MESSAGE)
 
-  const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) => setText(e.target.value)
+  const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) =>
+    setText(e.target.value)
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (text.length > 0) {

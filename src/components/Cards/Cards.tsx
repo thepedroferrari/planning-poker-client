@@ -6,6 +6,6 @@ type Props = {
 }
 
 export const Cards = ({ cards }: Props) => {
-  const deck = cards.map((card) => <Card value={card} />)
+  const deck = cards.map((card) => <Card value={card} key={card} />)
   return <StyledCards>{deck}</StyledCards>
 }

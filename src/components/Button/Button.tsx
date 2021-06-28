@@ -6,7 +6,10 @@ type Props = ButtonHTMLAttributes<{
 }>
 
 export const Button = ({ children, onClick }: Props) => (
-  <StyledButton whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }} onClick={onClick}>
+  <StyledButton
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.9 }}
+    onClick={onClick}>
     {children}
   </StyledButton>
 )
