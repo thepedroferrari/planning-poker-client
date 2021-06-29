@@ -1,5 +1,14 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client"
+import {
+  ApolloClient,
+  ApolloLink,
+  ApolloProvider,
+  concat,
+  HttpLink,
+  InMemoryCache,
+  split,
+} from "@apollo/client"
 import { WebSocketLink } from "@apollo/client/link/ws"
+import { getMainDefinition } from "@apollo/client/utilities"
 import { App } from "components/App"
 import { GlobalStyle } from "GlobalStyles"
 import React from "react"
@@ -12,10 +21,39 @@ const wsLink = new WebSocketLink({
     reconnect: true,
   },
 })
+const httpLink = new HttpLink({
+  uri: process.env.REACT_APP_GQL_SERVER,
+  credentials: "same-origin",
+})
+
+const link = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query)
+    return (
+      definition.kind === "OperationDefinition" &&
+      definition.operation === "subscription"
+    )
+  },
+  wsLink as ApolloLink,
+  httpLink,
+)
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+  // add the authorization to the headers
+  operation.setContext({
+    headers: {
+      authorization: localStorage.getItem("token") || null,
+    },
+  })
+
+  return forward(operation)
+})
 
 const client = new ApolloClient({
-  link: wsLink,
+  link: concat(authMiddleware, link),
   uri: process.env.REACT_APP_GQL_SERVER,
+  credentials: "same-origin",
+
   cache: new InMemoryCache(),
 })
 
