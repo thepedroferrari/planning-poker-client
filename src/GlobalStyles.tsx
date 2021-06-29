@@ -30,7 +30,6 @@ export const GlobalStyle = createGlobalStyle`
   --grey: #999;
   --dark: #1a1a1a;
   --light: #e6e6e6;
-  --wrapper: 1000px;
   --blue: #00b0ff;
 
   /* Type */
@@ -74,11 +73,10 @@ export const GlobalStyle = createGlobalStyle`
   --padding: 1em;
   --smallLargePadding: calc(var(--padding) / 2) var(--padding);
   --margin: 1.5em;
-  --max-basis-font: 24px;
+  --max-basis-font: 20px;
   --line-height: 1.5;
   --desktop: 48em;
   --mobile: 26em;
-
   --header-height: 3rem;
   /* Other */
   font-size: 100%;

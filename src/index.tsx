@@ -23,7 +23,6 @@ const wsLink = new WebSocketLink({
 })
 const httpLink = new HttpLink({
   uri: process.env.REACT_APP_GQL_SERVER,
-  credentials: "same-origin",
 })
 
 const link = split(
@@ -52,7 +51,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 const client = new ApolloClient({
   link: concat(authMiddleware, link),
   uri: process.env.REACT_APP_GQL_SERVER,
-  credentials: "same-origin",
+  credentials: "include",
 
   cache: new InMemoryCache(),
 })

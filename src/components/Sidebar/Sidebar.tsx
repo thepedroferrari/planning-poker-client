@@ -1,8 +1,9 @@
 import { useLazyQuery } from "@apollo/client"
-import { CreateRoom } from "components/CreateRoom"
+import { Button } from "components/Button"
 import { TEN_SECONDS_MS } from "constants/time"
 import { GET_ALL_ROOMS } from "queries/getAllRooms"
 import { useLayoutEffect, useRef } from "react"
+import { useHistory } from "react-router-dom"
 import { store } from "store/store"
 import { TRoomNameUpdate, TRoomNameUpdateData } from "types/room"
 import { createAndSortRoomData } from "utils"
@@ -11,6 +12,7 @@ import { StyledSidebar } from "./StyledSidebar"
 
 export const Sidebar = () => {
   const { user } = store()
+  const history = useHistory()
   const [getRooms, { loading: isLoading, data }] =
     useLazyQuery<TRoomNameUpdateData>(GET_ALL_ROOMS, {})
 
@@ -44,7 +46,13 @@ export const Sidebar = () => {
   return (
     <StyledSidebar>
       <>{roomElements}</>
-      {user ? <CreateRoom /> : <div>Login</div>}
+      {user ? (
+        <Button onClick={() => history.push("/create-room")}>
+          Create Room
+        </Button>
+      ) : (
+        <Button onClick={() => history.push("/login")}>Login</Button>
+      )}
     </StyledSidebar>
   )
 }

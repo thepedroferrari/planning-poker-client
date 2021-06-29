@@ -10,7 +10,6 @@ export const Header = () => {
   const history = useHistory()
 
   const handleClick = () => {
-    console.log("LOGOUT")
     if (!user?.email.address) {
       history.push("/login")
     }

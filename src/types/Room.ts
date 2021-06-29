@@ -1,3 +1,4 @@
+import { TError } from "./error"
 import { TMessage } from "./message"
 
 type Votes = {
@@ -30,4 +31,14 @@ export type RoomData = {
 
 export type SubsribeToRoomVariables = {
   name: string
+}
+
+export type TNewRoomData = {
+  createRoom: {
+    data: {
+      status: string
+      errors?: TError
+      room?: TRoom
+    }
+  }
 }

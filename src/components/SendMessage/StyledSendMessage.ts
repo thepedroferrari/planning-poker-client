@@ -8,7 +8,7 @@ export const StyledSendMessage = styled.form`
   place-content: center;
   place-items: center;
   padding: 1rem;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid var(--light);
 
   button {
     margin: 1em 0 1em 0.5em;

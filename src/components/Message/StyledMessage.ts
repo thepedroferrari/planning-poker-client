@@ -5,26 +5,44 @@ type Props = {
   isAuthor: boolean
 }
 export const StyledMessage = styled(motion.blockquote)<Props>`
-  background: ${({ isAuthor }) => (isAuthor ? css`green` : css`gray`)};
-  color: black;
+  color: var(--white);
   display: flex;
   flex-direction: column;
   max-width: 60%;
   width: fit-content;
-  padding: 0 1rem 0.25em;
+  padding: var(--base-size) var(--base-size-x2);
   position: relative;
   margin-top: 2em;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    display: block;
+    width: var(--base-size);
+    height: var(--base-size);
+    bottom: 0;
+    left: -2px;
+    background: var(--blue);
+    content: " ";
+    transform: rotate(-10deg) skew(-35deg);
+  }
 
   ${({ isAuthor }) =>
     isAuthor
       ? css`
-          background: greenyellow;
+          background: var(--dark);
           align-self: flex-end;
           align-items: flex-end;
           border-radius: 1em 1em 0 1em;
+          &::before {
+            background: var(--dark);
+            left: unset;
+            right: -2px;
+            transform: rotate(10deg) skew(35deg);
+          }
         `
       : css`
-          background: lightgray;
+          background: var(--blue);
           align-self: flex-start;
           align-items: flex-start;
           border-radius: 1em 1em 1em 0;

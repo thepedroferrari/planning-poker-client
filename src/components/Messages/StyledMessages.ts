@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const StyledMessages = styled.div`
+export const StyledMessages = styled.section`
   grid-area: messages;
   overflow-y: scroll;
   display: flex;

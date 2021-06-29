@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
 export const StyledCard = styled.label`
-  background: whitesmoke;
-  width: var(--base-size-x3);
-  height: var(--base-size-x6);
+  background: var(--white);
+  width: var(--base-size-x4);
+  height: var(--base-size-x5);
   border-radius: var(--base-size-half);
   font-size: var(--base-size-x2);
   justify-self: start;
@@ -20,11 +20,12 @@ export const StyledCard = styled.label`
     box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.1);
   }
   input:checked + .card {
-    background: rgb(50, 100, 200);
+    background: var(--blue);
     color: white;
   }
 
   @media screen and (min-width: 30rem) {
+    width: var(--base-size-x4);
     font-size: 20px;
   }
 `

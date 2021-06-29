@@ -158,7 +158,7 @@ export const AuthUser = () => {
               {footerCta}
             </span>
             <Button type="submit">
-              {shouldCreateAccount ? "Create Account" : "Login"}
+              {shouldCreateAccount ? "Register" : "Login"}
             </Button>
           </footer>
         </form>

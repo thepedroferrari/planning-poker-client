@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const StyledHeader = styled.header`
   grid-area: header;
   color: white;
-  background-color: rgba(50, 100, 200);
+  background-color: var(--dark);
   padding: 0.5rem;
   display: grid;
   grid-template-columns: auto 1fr;

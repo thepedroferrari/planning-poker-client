@@ -13,10 +13,10 @@ export const Message = ({ message, isAuthor, roomName }: Props) => (
     cite={`${process.env.REACT_APP_PUBLIC_URL}/rooms/${roomName}`}
     isAuthor={isAuthor}
     key={message.id}
-    animate={{ opacity: 1 }}
-    initial={{ opacity: 0 }}
+    animate={{ opacity: 1, left: 0 }}
+    initial={isAuthor ? { opacity: 0, left: 200 } : { opacity: 0, left: -200 }}
     transition={{
-      opacity: { duration: 0.33, type: "tween" },
+      opacity: { duration: 0.25, type: "tween" },
     }}>
     <time>{getTimeFromDate(message.date)}</time>
     <figcaption>{message.author}</figcaption>

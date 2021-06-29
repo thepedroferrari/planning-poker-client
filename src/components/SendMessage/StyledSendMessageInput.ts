@@ -33,14 +33,14 @@ export const StyledSendMessageInput = styled.label`
   }
 
   &:focus-within {
-    outline: solid 1px rgb(50, 100, 200);
-    box-shadow: 0 0 4px 1px rgb(50, 100, 200);
-    border-color: rgb(50, 100, 200);
+    outline: solid 1px var(--blue);
+    box-shadow: 0 0 4px 1px var(--blue);
+    border-color: var(--blue);
 
     textarea:focus {
       outline: none;
     }
   }
 
-  box-shadow: 0 0 4px rgba(50, 100, 200, 0.8);
+  box-shadow: 0 0 4px rgba(90, 150, 250, 0.8);
 `

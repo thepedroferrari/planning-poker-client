@@ -15,6 +15,7 @@ export const StyledAuth = styled.section`
     color: blue;
     margin-bottom: var(--margin);
     text-align: center;
+    cursor: pointer;
 
     &.footer-cta {
       color: #2b2b2b;
@@ -51,6 +52,9 @@ export const StyledAuth = styled.section`
       display: flex;
       place-self: end;
       gap: var(--base-size-x4);
+      button {
+        min-width: 120px;
+      }
 
       @media screen and (max-width: 30rem) {
         gap: var(--base-size-x2);

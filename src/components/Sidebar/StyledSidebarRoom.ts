@@ -10,7 +10,27 @@ export const StyledSidebarRoom = styled.div<Props>`
   grid-template-areas: "icon name" "icon time";
   grid-template-columns: var(--base-size-x8) 1fr;
   cursor: pointer;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 1px;
+    background: var(--light);
+    left: 10%;
+    bottom: 0;
+  }
+  &:hover {
+    background: var(--blue);
+    span,
+    time {
+      color: var(--white);
+    }
 
+    &::after {
+      display: none;
+    }
+  }
   i {
     display: flex;
     font-style: normal;
@@ -18,7 +38,7 @@ export const StyledSidebarRoom = styled.div<Props>`
     background: white;
     width: var(--base-size-x6);
     height: var(--base-size-x6);
-    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-inner-heavy);
     place-content: center;
     place-items: center;
     grid-area: icon;
@@ -35,6 +55,7 @@ export const StyledSidebarRoom = styled.div<Props>`
     font-size: 14px;
     align-self: start;
   }
+
   @media screen and (max-width: 30rem) {
     grid-template-areas: "icon";
     grid-template-columns: 1fr;
@@ -46,9 +67,17 @@ export const StyledSidebarRoom = styled.div<Props>`
   ${({ selected }) =>
     selected
       ? css`
-          background: lightseagreen;
+          background: var(--blue);
+          border-left: 5px solid rgba(0, 0, 0, 0.15);
+          &::after {
+            display: none;
+          }
+          span,
+          time {
+            color: var(--white);
+          }
         `
       : css`
-          background: whitesmoke;
+          background: var(--white);
         `};
 `
