@@ -2,7 +2,7 @@ import { useLazyQuery } from "@apollo/client"
 import { CreateRoom } from "components/CreateRoom"
 import { TEN_SECONDS_MS } from "constants/time"
 import { GET_ALL_ROOMS } from "queries/getAllRooms"
-import { useEffect, useRef } from "react"
+import { useLayoutEffect, useRef } from "react"
 import { store } from "store/store"
 import { TRoomNameUpdate, TRoomNameUpdateData } from "types/room"
 import { createAndSortRoomData } from "utils"
@@ -16,7 +16,7 @@ export const Sidebar = () => {
 
   const rooms = useRef<(TRoomNameUpdate & { abbr: string })[]>([])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     getRooms()
     const timer = setInterval(() => {
       getRooms()

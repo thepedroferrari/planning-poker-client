@@ -1,6 +1,7 @@
 import { Messages } from "components/Messages"
 import { RouteWrapper } from "components/RouteWrapper"
 import { SendMessage } from "components/SendMessage"
+import { Topic } from "components/Topic/Topic"
 import { useEffect, useLayoutEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import { store } from "store/store"
@@ -10,6 +11,7 @@ type TParams = { name: string }
 
 export const Room = () => {
   const { name } = useParams<TParams>()
+  const { room } = store()
   const messagesRef = useRef<HTMLDivElement>(null)
 
   const { setSelectedRoom, user } = store()
@@ -18,8 +20,9 @@ export const Room = () => {
     setSelectedRoom(name)
   }, [name, setSelectedRoom])
 
+  let scrollTimer: NodeJS.Timeout
   const delayedScrollLastMessage = () => {
-    setTimeout(() => {
+    scrollTimer = setTimeout(() => {
       if (messagesRef.current) {
         messagesRef.current.scrollTop = messagesRef.current.scrollHeight
       }
@@ -28,11 +31,19 @@ export const Room = () => {
 
   useLayoutEffect(() => {
     delayedScrollLastMessage()
+
+    return () => {
+      clearTimeout(scrollTimer)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messagesRef])
+
+  const lastTopic = room?.topics[room.topics.length - 1]
 
   return (
     <RouteWrapper>
       <StyledRoom>
+        {lastTopic && <Topic topic={lastTopic} />}
         <Messages roomName={name} user={user} messagesRef={messagesRef} />
         <SendMessage
           author={user?.email.address}

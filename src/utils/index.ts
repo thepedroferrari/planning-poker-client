@@ -1,3 +1,5 @@
 export { createAndSortRoomData } from "./createAndSortRoomData"
+export { getAverageFromArray } from "./getAverageFromArray"
+export { getErrorsForField } from "./getErrorsForField"
 export { getFirstAndLastStartingLetters } from "./getFirstAndLastStartingLetters"
 export { getTimeFromDate } from "./getTimeFromDate"

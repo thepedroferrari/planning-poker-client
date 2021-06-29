@@ -26,11 +26,14 @@ export const StyledSidebarRoom = styled.div<Props>`
   }
   span {
     grid-area: name;
-    font-size: 1rem;
+    font-size: 0.85rem;
+    align-self: end;
+    line-height: 1.1;
   }
   time {
     grid-area: time;
     font-size: 14px;
+    align-self: start;
   }
   @media screen and (max-width: 30rem) {
     grid-template-areas: "icon";

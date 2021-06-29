@@ -18,10 +18,10 @@ export const Messages = ({ user, messagesRef, roomName }: Props) => {
   // they're using are updated, we do not need to handle side-effects here :)
   const messages: TMessage[] = room?.messages || []
 
-  const renderMessage = messages.map((m) => (
+  const renderMessage = messages.map((m, i) => (
     <Message
       isAuthor={m.author === user?.email.address}
-      key={m.id}
+      key={m.id ? m.id.toString() : i.toString()}
       message={m}
       roomName={roomName}
     />

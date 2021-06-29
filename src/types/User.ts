@@ -8,10 +8,22 @@ export type TUser = {
   // TODO: Re-add this registrationDate: number
 }
 
-export type TUserData = {
-  data: {
-    status: string
-    errors?: TError[]
-    user?: TUser
+export type TRegisterUserData = {
+  registerUser: {
+    data: {
+      status: string
+      errors?: TError[]
+      user?: TUser
+    }
+  }
+}
+
+export type TAuthUserData = {
+  authUser: {
+    data: {
+      status: string
+      errors?: TError[]
+      user?: TUser
+    }
   }
 }

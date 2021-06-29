@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const StyledSidebar = styled.section`
+export const StyledSidebar = styled.nav`
   grid-area: sidebar;
   width: 100%;
   height: calc(100vh - var(--header-height));

@@ -1,17 +1,17 @@
 import { TMessage } from "./message"
 
 type Votes = {
-  email: string
+  author: string
   vote: number
 }
 
-type Topic = {
+export type TTopic = {
   name: string
   votes: Votes[]
 }
 
 export type TRoom = {
-  topics: Topic[]
+  topics: TTopic[]
   name: string
   owner: string // user email
   messages: TMessage[]

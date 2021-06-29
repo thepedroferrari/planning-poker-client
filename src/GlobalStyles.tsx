@@ -24,35 +24,15 @@ export const GlobalStyle = createGlobalStyle`
 :root {
   /* Variables */
   /* -Colours- */
-  --white: #fcfeff;
-  --orange: #f58220;
-  --lightBlue: #00b7f0;
-  --blue: #01589c;
-  --darkBlue: #04183c;
-  --black: #00171f;
-  --grey: #bfbfbf;
-  --lightGrey: #f2f4f6;
-  /* Defaults */
-  --bg-primary: var(--white);
-  --bg-secondary: var(--darkBlue);
-  --bg-black: var(--black);
-  --bg-accent: var(--orange);
-  --text-primary: var(--black);
-  --text-secondary: var(--white);
-  --text-accent: var(--orange);
-  --link-primary: var(--darkBlue);
-  --link-medium: var(--orange);
-  --link-light: var(--lightBlue);
-  /* CTA */
-  --cta-light-background: var(--orange);
-  --cta-medium-background: var(--blue);
-  --cta-dark-background: var(--darkBlue);
-  --cta-light-text: var(--white);
-  --cta-medium-text: var(--orange);
-  --cta-dark-text: var(--black);
-  --cta-border-dark: var(--black);
-  --cta-border-medium: var(--orange);
-  --cta-border-light: var(--white);
+  --white: #fff;
+  --black: #000;
+  --bg: #f8f8f8;
+  --grey: #999;
+  --dark: #1a1a1a;
+  --light: #e6e6e6;
+  --wrapper: 1000px;
+  --blue: #00b0ff;
+
   /* Type */
   --text-font-family: 'Karla', sans-serif;
   --heading-font-family: 'Karla', sans-serif;
@@ -73,8 +53,10 @@ export const GlobalStyle = createGlobalStyle`
   --base-size-x2: calc(var(--base-size) * 2);
   --base-size-x3: calc(var(--base-size) * 3);
   --base-size-x4: calc(var(--base-size) * 4);
+  --base-size-x5: calc(var(--base-size) * 5);
   --base-size-x6: calc(var(--base-size) * 6);
   --base-size-x8: calc(var(--base-size) * 8);
+  --base-size-x10: calc(var(--base-size) * 10);
 
   --smallText: .8em;
   /* Elevation */
@@ -86,8 +68,9 @@ export const GlobalStyle = createGlobalStyle`
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   --shadow-inner-heavy: inset 0 2px 4px 0 rgba(0, 0, 0, 0.25);
   --shadow-outline: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  
   /* Sizes */
-  --border-radius: calc(var(--base-text-size) / 5);
+  --border-radius: var(--base-size-x2);
   --padding: 1em;
   --smallLargePadding: calc(var(--padding) / 2) var(--padding);
   --margin: 1.5em;
@@ -142,6 +125,7 @@ body {
   display: grid;
   grid-template-rows: 1fr;
   height: 100vh;
+  text-rendering: optimizeLegibility;
 }
 #root {
   display: grid;

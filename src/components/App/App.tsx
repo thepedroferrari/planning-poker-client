@@ -1,3 +1,4 @@
+import { AuthUser } from "components/AuthUser"
 import { Room } from "components/Room"
 import { Welcome } from "components/Welcome"
 import { useRoomSubscription } from "hooks"
@@ -10,6 +11,7 @@ export const App = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Welcome} />
+        <Route exact path="/login" component={AuthUser} />
         <Route path="/room/:name" component={Room} />
       </Switch>
     </BrowserRouter>
