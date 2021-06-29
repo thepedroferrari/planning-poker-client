@@ -9,10 +9,13 @@ type Props = {
 }
 
 export const SidebarRoom = ({ name, lastUpdate, abbr }: Props) => {
-  const { selectedRoom } = store()
+  const { selectedRoom, setSelectedRoom } = store()
 
   return (
-    <StyledSidebarRoom selected={selectedRoom === name} key={name}>
+    <StyledSidebarRoom
+      selected={selectedRoom === name}
+      key={name}
+      onClick={() => setSelectedRoom(name)}>
       <span>{name}</span>
       <i title={name}>{abbr}</i>
       <time>{format(lastUpdate)}</time>

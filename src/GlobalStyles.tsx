@@ -1,13 +1,13 @@
 import { createGlobalStyle } from "styled-components"
 
-/* eslint-disable-next-line @typescript-eslint/naming-convention */
+/* eslint-disable */
 export const GlobalStyle = createGlobalStyle`
 /* Fonts */
 @font-face {
   font-family: 'Karla';
   font-style: normal;
   font-weight: 300;
-  src: url('fonts/karla-light.woff2') format('woff2');
+  src: url('${process.env.REACT_APP_PUBLIC_URL}/fonts/karla-light.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, 
   U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
   font-family: 'Karla';
   font-style: normal;
   font-weight: 500;
-  src: url('fonts/karla-medium.woff2') format('woff2');
+  src: url('${process.env.REACT_APP_PUBLIC_URL}/fonts/karla-medium.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, 
   U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -54,7 +54,7 @@ export const GlobalStyle = createGlobalStyle`
   --cta-border-medium: var(--orange);
   --cta-border-light: var(--white);
   /* Type */
-  --text-font-family: 'Karla', serif;
+  --text-font-family: 'Karla', sans-serif;
   --heading-font-family: 'Karla', sans-serif;
   --h1: 2em;
   --h2: 1.75em;

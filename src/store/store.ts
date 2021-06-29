@@ -1,6 +1,6 @@
 import { createTrackedSelector } from "react-tracked"
-import { TRoom } from "types/Room"
-import { TUser } from "types/User"
+import { TRoom } from "types/room"
+import { TUser } from "types/user"
 import create, { SetState } from "zustand"
 
 import { Store } from "./storeTypes"

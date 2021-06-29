@@ -1,5 +1,5 @@
-import { TRoom } from "types/Room"
-import { TUser } from "types/User"
+import { TRoom } from "types/room"
+import { TUser } from "types/user"
 
 export type Store = {
   room: TRoom | null

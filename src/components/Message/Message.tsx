@@ -1,15 +1,16 @@
-import { TMessage } from "types/Message"
+import { TMessage } from "types/message"
 import { getTimeFromDate } from "utils"
 import { StyledMessage } from "./StyledMessage"
 
 type Props = {
   message: TMessage
   isAuthor: boolean
+  roomName: string
 }
 
-export const Message = ({ message, isAuthor }: Props) => (
+export const Message = ({ message, isAuthor, roomName }: Props) => (
   <StyledMessage
-    cite={`${process.env.REACT_APP_PUBLIC_URL}/rooms/Frontend`}
+    cite={`${process.env.REACT_APP_PUBLIC_URL}/rooms/${roomName}`}
     isAuthor={isAuthor}
     key={message.id}
     animate={{ opacity: 1 }}

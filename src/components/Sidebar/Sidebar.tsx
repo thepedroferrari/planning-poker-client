@@ -1,16 +1,15 @@
 import { useQuery } from "@apollo/client"
+import { CreateRoom } from "components/CreateRoom"
 import { GET_ALL_ROOMS } from "queries/getAllRooms"
 import { useEffect, useRef } from "react"
-import { TRoomNameUpdate, TRoomNameUpdateData } from "types/Room"
+import { store } from "store/store"
+import { TRoomNameUpdate, TRoomNameUpdateData } from "types/room"
 import { getFirstAndLastStartingLetters } from "utils"
 import { SidebarRoom } from "./SidebarRoom"
 import { StyledSidebar } from "./StyledSidebar"
 
-type Props = {
-  user: string
-}
-
-export const Sidebar = ({ user }: Props) => {
+export const Sidebar = () => {
+  const { user } = store()
   const {
     loading: isLoading,
     error,
@@ -43,7 +42,10 @@ export const Sidebar = ({ user }: Props) => {
     />
   ))
 
-  return user !== "Pedro Ferrari" ? null : (
-    <StyledSidebar>{roomElements}</StyledSidebar>
+  return (
+    <StyledSidebar>
+      <>{roomElements}</>
+      {user ? <CreateRoom /> : <div>LOGIN</div>}
+    </StyledSidebar>
   )
 }

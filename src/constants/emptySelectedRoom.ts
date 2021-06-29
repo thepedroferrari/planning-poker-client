@@ -1,4 +1,4 @@
-import { RoomData } from "types/Room"
+import { RoomData } from "types/room"
 
 export const EMPTY_ROOM: RoomData = {
   data: {

@@ -1,4 +1,4 @@
-import { TMessage } from "./Message"
+import { TMessage } from "./message"
 
 type Votes = {
   email: string

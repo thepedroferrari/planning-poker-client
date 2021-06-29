@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
-export const StyledRoom = styled.main`
-  grid-area: room;
+export const StyledRoom = styled.article`
   background: white;
   display: grid;
   grid-template-areas: "messages" "send-message";

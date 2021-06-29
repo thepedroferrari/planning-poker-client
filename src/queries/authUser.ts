@@ -1,15 +1,17 @@
 import { gql } from "@apollo/client"
 
 export const AUTH_USER = gql`
-  mutation AuthUser {
-    authUser(email: "pedro@pedroferrari.com", password: "pedroferrari") {
-      data {
-        status
-        error {
-          message
-        }
-        user {
-          id
+  mutation AuthUser ($email: String!, $password: String!) {
+    registerUser(email: $email, password: $password) {
+    data {
+      status
+      errors {
+        field
+        message
+      }
+			user {
+        email {
+          address
         }
       }
     }

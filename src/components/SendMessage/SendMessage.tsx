@@ -7,7 +7,7 @@ import { StyledSendMessage } from "./StyledSendMessage"
 import { StyledSendMessageInput } from "./StyledSendMessageInput"
 
 type Props = {
-  author: string
+  author?: string
   scroll: () => void
 }
 export const SendMessage = ({ author, scroll }: Props) => {
@@ -18,6 +18,9 @@ export const SendMessage = ({ author, scroll }: Props) => {
     setText(e.target.value)
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!author) {
+      alert("Please Login")
+    }
     if (text.length > 0) {
       postMessage({
         variables: {

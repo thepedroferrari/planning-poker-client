@@ -1,12 +1,12 @@
 import { useApolloClient } from "@apollo/client"
 import { SUBSCRIBE_ROOM } from "queries/subscribeToRoom"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { store } from "store/store"
-import { RoomData, SubsribeToRoomVariables } from "types/Room"
+import { RoomData, SubsribeToRoomVariables } from "types/room"
 
-export const useMessageSubscription = (): RoomData | null => {
-  const { selectedRoom } = store()
-  const [room, setRoom] = useState<RoomData | null>(null)
+export const useMessageSubscription = () => {
+  const { selectedRoom, setRoom } = store()
+
   const client = useApolloClient()
 
   useEffect(() => {
@@ -19,13 +19,11 @@ export const useMessageSubscription = (): RoomData | null => {
 
     const subscription = observer.subscribe(({ data }) => {
       if (typeof data === "object" && data !== null) {
-        setRoom(data)
+        setRoom(data.data)
         console.log("SUBSCRIBE received", data)
       }
     })
 
     return () => subscription.unsubscribe()
-  }, [selectedRoom, client])
-
-  return room
+  }, [selectedRoom, client, setRoom])
 }
