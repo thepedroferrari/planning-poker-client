@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { store } from "store/store"
 import { RoomData, SubsribeToRoomVariables } from "types/room"
 
-export const useMessageSubscription = () => {
+export const useRoomSubscription = () => {
   const { selectedRoom, setRoom } = store()
 
   const client = useApolloClient()
@@ -19,8 +19,8 @@ export const useMessageSubscription = () => {
 
     const subscription = observer.subscribe(({ data }) => {
       if (typeof data === "object" && data !== null) {
-        setRoom(data.data)
-        console.log("SUBSCRIBE received", data)
+        setRoom(data.room)
+        console.log(data.room)
       }
     })
 

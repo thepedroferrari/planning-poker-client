@@ -1,37 +1,36 @@
-import { useQuery } from "@apollo/client"
+import { useLazyQuery } from "@apollo/client"
 import { CreateRoom } from "components/CreateRoom"
+import { TEN_SECONDS_MS } from "constants/time"
 import { GET_ALL_ROOMS } from "queries/getAllRooms"
 import { useEffect, useRef } from "react"
 import { store } from "store/store"
 import { TRoomNameUpdate, TRoomNameUpdateData } from "types/room"
-import { getFirstAndLastStartingLetters } from "utils"
+import { createAndSortRoomData } from "utils"
 import { SidebarRoom } from "./SidebarRoom"
 import { StyledSidebar } from "./StyledSidebar"
 
 export const Sidebar = () => {
   const { user } = store()
-  const {
-    loading: isLoading,
-    error,
-    data,
-  } = useQuery<TRoomNameUpdateData>(GET_ALL_ROOMS, {
-    pollInterval: 5000,
-  })
+  const [getRooms, { loading: isLoading, data }] =
+    useLazyQuery<TRoomNameUpdateData>(GET_ALL_ROOMS, {})
 
   const rooms = useRef<(TRoomNameUpdate & { abbr: string })[]>([])
 
   useEffect(() => {
-    if (!data) return
-    rooms.current = [
-      ...data.allRooms.map(({ name, lastUpdate }) => ({
-        name,
-        abbr: getFirstAndLastStartingLetters(name),
-        lastUpdate,
-      })),
-    ].sort((a, b) => b.lastUpdate - a.lastUpdate)
-  }, [data])
+    getRooms()
+    const timer = setInterval(() => {
+      getRooms()
+    }, TEN_SECONDS_MS)
+    if (!data) return undefined
 
-  if (isLoading || !data || error) return null
+    rooms.current = createAndSortRoomData(data)
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [getRooms, data])
+
+  if (isLoading) return <div>Loading...</div>
 
   const roomElements = rooms.current.map((room) => (
     <SidebarRoom
@@ -45,7 +44,7 @@ export const Sidebar = () => {
   return (
     <StyledSidebar>
       <>{roomElements}</>
-      {user ? <CreateRoom /> : <div>LOGIN</div>}
+      {user ? <CreateRoom /> : <div>Login</div>}
     </StyledSidebar>
   )
 }

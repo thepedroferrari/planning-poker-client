@@ -9,6 +9,7 @@ export const StyledSidebarRoom = styled.div<Props>`
   display: grid;
   grid-template-areas: "icon name" "icon time";
   grid-template-columns: var(--base-size-x8) 1fr;
+  cursor: pointer;
 
   i {
     display: flex;

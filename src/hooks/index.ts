@@ -1,2 +1,2 @@
-export { useMessageSubscription } from "./useMessageSubscription"
+export { useRoomSubscription } from "./useRoomSubscription"
 export { useToggle } from "./useToggle"

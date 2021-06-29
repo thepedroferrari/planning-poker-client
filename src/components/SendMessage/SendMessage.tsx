@@ -20,6 +20,7 @@ export const SendMessage = ({ author, scroll }: Props) => {
     e.preventDefault()
     if (!author) {
       alert("Please Login")
+      return
     }
     if (text.length > 0) {
       postMessage({

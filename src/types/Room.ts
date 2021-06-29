@@ -25,7 +25,7 @@ export type TRoomNameUpdateData = {
 }
 
 export type RoomData = {
-  data: TRoom
+  room: TRoom
 }
 
 export type SubsribeToRoomVariables = {

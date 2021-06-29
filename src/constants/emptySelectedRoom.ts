@@ -1,7 +1,7 @@
 import { RoomData } from "types/room"
 
 export const EMPTY_ROOM: RoomData = {
-  data: {
+  room: {
     name: "",
     owner: "",
     messages: [],

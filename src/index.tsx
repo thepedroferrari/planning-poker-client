@@ -1,11 +1,9 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client"
 import { WebSocketLink } from "@apollo/client/link/ws"
-import { Welcome } from "components/Welcome"
+import { App } from "components/App"
 import { GlobalStyle } from "GlobalStyles"
 import React from "react"
 import ReactDOM from "react-dom"
-import { BrowserRouter, Route, Switch } from "react-router-dom"
-import { App } from "./components/App"
 
 // import reportWebVitals from "./reportWebVitals"
 const wsLink = new WebSocketLink({
@@ -25,12 +23,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <GlobalStyle />
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Welcome} />
-          <Route path="/room/:name" component={App} />
-        </Switch>
-      </BrowserRouter>
+      <App />
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root"),
