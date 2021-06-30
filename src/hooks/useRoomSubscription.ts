@@ -20,7 +20,6 @@ export const useRoomSubscription = () => {
     const subscription = observer.subscribe(({ data }) => {
       if (typeof data === "object" && data !== null) {
         setRoom(data.room)
-        console.log(data.room)
       }
     })
 

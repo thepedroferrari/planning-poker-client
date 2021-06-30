@@ -16,7 +16,7 @@ export const Topic = ({ topic, isEmpty }: Props) => {
       <h2 className="title">{topic.name}</h2>
       <div className="votes">
         {topic.votes.map((vote) => (
-          <Card value={vote.vote} key={vote.author} />
+          <Card value={vote.vote} title={vote.author} key={vote.author} />
         ))}
       </div>
     </StyledTopic>

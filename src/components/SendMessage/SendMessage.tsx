@@ -7,28 +7,42 @@ import { StyledSendMessage } from "./StyledSendMessage"
 import { StyledSendMessageInput } from "./StyledSendMessageInput"
 
 type Props = {
+  roomName: string
   author?: string
   scroll: () => void
 }
-export const SendMessage = ({ author, scroll }: Props) => {
+export const SendMessage = ({ author, scroll, roomName }: Props) => {
   const [text, setText] = useState("")
+  const [vote, setVote] = useState<number | undefined>(undefined)
   const [postMessage] = useMutation(POST_MESSAGE)
 
   const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) =>
     setText(e.target.value)
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!author) {
-      alert("Please Login")
+      alert("Please Login to send messages")
       return
     }
     if (text.length > 0) {
-      postMessage({
-        variables: {
-          author,
-          content: text,
-        },
-      })
+      if (vote) {
+        await postMessage({
+          variables: {
+            author,
+            content: text,
+            vote,
+            roomName,
+          },
+        })
+      } else {
+        await postMessage({
+          variables: {
+            author,
+            content: text,
+            roomName,
+          },
+        })
+      }
       setText("")
       scroll()
     }
@@ -36,7 +50,7 @@ export const SendMessage = ({ author, scroll }: Props) => {
 
   return (
     <StyledSendMessage onSubmit={handleSubmit}>
-      <Cards cards={[0.5, 1, 2, 3, 5, 7, 13, 21]} />
+      <Cards cards={[0.5, 1, 2, 3, 5, 7, 13, 21]} setVote={setVote} />
       <StyledSendMessageInput data-value={text}>
         <textarea onInput={handleInput} value={text} />
       </StyledSendMessageInput>

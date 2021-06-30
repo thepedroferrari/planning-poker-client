@@ -50,6 +50,9 @@ export const Room = () => {
     )
 
   const isOwner = room?.owner === userEmail
+  const createTopic = isOwner ? (
+    <CreateTopic author={userEmail!} roomName={room.name} />
+  ) : null
 
   return (
     <RouteWrapper>
@@ -60,8 +63,9 @@ export const Room = () => {
           <Topic topic={EMPTY_TOPIC} isEmpty />
         )}
         <Messages roomName={name} user={user} messagesRef={messagesRef} />
-        {isOwner && <CreateTopic author={userEmail!} roomName={room.name} />}
+        {createTopic}
         <SendMessage
+          roomName={room.name}
           author={user?.email.address}
           scroll={delayedScrollLastMessage}
         />

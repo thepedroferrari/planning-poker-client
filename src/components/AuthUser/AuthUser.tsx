@@ -18,8 +18,6 @@ export const AuthUser = () => {
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState<TError[]>([])
 
-  console.log({ shouldCreateAccount })
-
   const [authUser] = useMutation<TAuthUserData>(AUTH_USER)
   const [registerUser] = useMutation<TRegisterUserData>(REGISTER_USER)
 
@@ -32,7 +30,15 @@ export const AuthUser = () => {
     return (
       <RouteWrapper>
         <StyledAuth>
-          You are already logged in. Do you want to <a href="/">logout?</a>
+          <h1>Welcome!</h1>
+          <p>
+            You are now logged in into the app. Start exploring by selecting a
+            room on the left sidebar, or by create a new one yourself!
+          </p>
+          <hr />
+          <p>
+            Do you want to <a href="/">logout</a> instead?
+          </p>
         </StyledAuth>
       </RouteWrapper>
     )
@@ -69,7 +75,6 @@ export const AuthUser = () => {
           password,
         },
       })
-      console.log(data)
 
       const userData = data.data?.authUser.data
       if (userData !== undefined) {

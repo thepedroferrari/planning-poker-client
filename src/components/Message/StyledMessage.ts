@@ -14,6 +14,22 @@ export const StyledMessage = styled(motion.blockquote)<Props>`
   position: relative;
   margin-top: 2em;
   position: relative;
+  .vote {
+    background: var(--white);
+    z-index: 1;
+    position: absolute;
+    right: calc(var(--base-size-x2) * -1);
+    top: calc(var(--base-size-x2) * -1);
+    background: var(--white);
+    border: 1px solid var(--blue);
+    color: var(--dark);
+    border-radius: 50%;
+    width: var(--base-size-x4);
+    height: var(--base-size-x4);
+    display: flex;
+    place-items: center;
+    place-content: center;
+  }
 
   &::before {
     position: absolute;
@@ -34,6 +50,12 @@ export const StyledMessage = styled(motion.blockquote)<Props>`
           align-self: flex-end;
           align-items: flex-end;
           border-radius: 1em 1em 0 1em;
+          .vote {
+            right: unset;
+            left: calc(var(--base-size-x2) * -1);
+            border: 1px solid var(--dark);
+            color: var(--dark);
+          }
           &::before {
             background: var(--dark);
             left: unset;

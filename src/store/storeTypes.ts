@@ -7,6 +7,6 @@ export type Store = {
   selectedRoom: string
 
   setRoom: (room: TRoom) => void
-  setUser: (user: TUser) => void
+  setUser: (user: TUser | null) => void
   setSelectedRoom: (selectedRoom: string) => void
 }

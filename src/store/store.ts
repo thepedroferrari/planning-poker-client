@@ -11,7 +11,7 @@ const appStore = create<Store>((set: SetState<Store>) => ({
   selectedRoom: "",
 
   setRoom: (room: TRoom) => set({ room }),
-  setUser: (user: TUser) => set({ user }),
+  setUser: (user: TUser | null) => set({ user }),
   setSelectedRoom: (selectedRoom: string) => set({ selectedRoom }),
 }))
 
