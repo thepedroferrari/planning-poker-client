@@ -21,7 +21,7 @@ export const SendMessage = ({ author, scroll, roomName }: Props) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!author) {
-      alert("Please Login to send messages")
+      setText("You need to be logged in to be able to post a message!")
       return
     }
     if (text.length > 0) {
