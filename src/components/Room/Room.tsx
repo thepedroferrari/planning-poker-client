@@ -50,9 +50,10 @@ export const Room = () => {
     )
 
   const isOwner = room?.owner === userEmail
-  const createTopic = isOwner ? (
-    <CreateTopic author={userEmail!} roomName={room.name} />
-  ) : null
+  const createTopic =
+    isOwner && userEmail ? (
+      <CreateTopic author={userEmail} roomName={room.name} />
+    ) : null
 
   return (
     <RouteWrapper>
