@@ -16,11 +16,14 @@ export const StyledSidebar = styled.nav`
     position: sticky;
   }
   button {
+    text-align: center;
     display: flex;
+    place-content: center;
     margin: var(--base-size-x2) auto 0 auto;
     @media screen and (max-width: 30rem) {
       font-size: 14px;
-      padding: var(--base-size-half) var(--base-size);
+      padding: var(--base-size-half) var(--base-size-quarter);
+      width: var(--base-size-x8);
     }
   }
 `
