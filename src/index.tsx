@@ -23,6 +23,7 @@ const wsLink = new WebSocketLink({
 })
 const httpLink = new HttpLink({
   uri: process.env.REACT_APP_GQL_SERVER,
+  credentials: "include",
 })
 
 const link = split(
